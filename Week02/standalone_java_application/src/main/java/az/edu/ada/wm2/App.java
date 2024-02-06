@@ -8,6 +8,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "This is a standalone Java Application created for Week 2!" );
+        System.out.println( "This is a standalone Java Application created for Web Mobile Week 2 and Maven Wrapper used there!" );
     }
 }
