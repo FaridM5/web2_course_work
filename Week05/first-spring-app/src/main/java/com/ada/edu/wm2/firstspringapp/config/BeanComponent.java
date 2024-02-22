@@ -9,10 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 //configuration can also be fine
 public class BeanComponent {
-    @Bean
     @Primary
-    @Scope("prototype")
+    @Bean
+//    @Scope("prototype")
     public Person defaultPerson(){
+
         return new Person(0, "Default", "Person");
     }
 

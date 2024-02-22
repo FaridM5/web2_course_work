@@ -6,26 +6,27 @@
     <title>New Person</title>
 </head>
 <body>
-<h2>NewPersons</h2>
-<p>NEW PERSON</p>
-<form action="#" method="POST"
 
-      th:action="@{/persons/save}" th:object="${person}">
+    <h2>NewPersons</h2>
+    <p>NEW PERSON</p>
 
+    <form action="#" method="POST"
 
+          th:action="@{/persons/save}" th:object="${person}">
 
-    <input type="text" th:field="*{firstName}"
+        <input type="text" th:field="*{firstName}"
 
-           placeholder="First name"/> <br/>
+               placeholder="First name"/> <br/>
 
-    <input type="text" th:field="*{lastName}"
+        <input type="text" th:field="*{lastName}"
 
-           placeholder="Last name"/> <br/>
+               placeholder="Last name"/> <br/>
 
-    <input type="submit" value="Save Person"/>
+        <input type="submit" value="Save Person"/>
 
-</form>
+    </form>
 
-<a th:href="@{/list}">Back to the list</a>
+<!--    <a th:href="@{/list}">Back to the list</a>-->
+    <a th:href="@{/persons}" target="_blank">Click here to go to the Persons</a>
 </body>
 </html>
