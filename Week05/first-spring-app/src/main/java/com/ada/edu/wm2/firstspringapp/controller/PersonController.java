@@ -15,7 +15,8 @@ public class PersonController {
     @GetMapping
     public  String getAllPersons(Model model){
 
-        var list = List.of(new Person(1,"Ali", "Aliyev"),
+        var list = List.of(
+                new Person(1,"Ali","Aliyev"),
                 new Person(1,"Manaf", "Aghazade"),
                 new Person(1,"Gultaj", "Aliyev"));
 
