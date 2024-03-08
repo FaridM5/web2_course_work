@@ -8,7 +8,8 @@ import org.springframework.web.bind.support.DefaultSessionAttributeStore;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
 
+@Controller
+@RequestMapping("/order")
 public class OrderController {
-
-
+    
 }
