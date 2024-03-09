@@ -22,4 +22,9 @@ public class Order {
         }
         products.add(product);
     }
+
+    public void setcustomerName(String name) {
+        customerName=name;
+        return;
+    }
 }
