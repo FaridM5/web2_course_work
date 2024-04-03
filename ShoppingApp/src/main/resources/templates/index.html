@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adazon Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png"
+     href="images/amazonico.jpg" />
+  </head>
+  <body>
+
+    <header id ="navbar">
+      <div class="logocont">
+        <a href="/" onclick="_blank"><img class="logo" src="images/adazonw.png"></a>
+      </div>
+      <input type="checkbox" id="nav_check" hidden>
+      <nav>
+          <ul>
+              <li>
+                  <a href="/user/add">Add User</a>
+              </li>
+              <li>
+                  <a href="/product/add">Add Product</a>
+              </li>
+              <li>
+                  <a href="/user/list">Users</a>
+              </li>
+              <li>
+                  <a href="/purchases">Purchases</a>
+              </li>
+              <li>
+                  <a href="/filter">Filter</a>
+              </li>
+          </ul>
+      </nav>
+  </header>
+
+  
+    <section>
+      <div class="container">
+        <div class="heading">
+          <h1>Find the best offer products that you wish!</h1>
+          <span>Offered by ADA University!</span>
+        </div>
+        <div class="row">
+          
+          <!--Product-->
+            <div th:each="product : ${products}" class="col">
+
+                <div class="imgContainer">
+                    <img th:if="${product.id le initialProductCount}" th:src="@{${'/images/preloaded/' + product.id + '.png'}}" alt="Product Image" />
+                    <img th:if="${product.id gt initialProductCount}" th:src="@{${'/images/uploaded/' + product.id + '.png'}}" alt="Product Image" />
+                </div>
+
+                <div class="title">
+                    <h2 th:text="${product.name}"></h2>
+                    <p th:text="'$' + ${product.price}"></p>
+                </div>
+
+                <div class="para">
+                    <p th:text="${product.description}"></p>
+                </div>
+
+                <div class="footer">
+                    <form th:action="@{/purchase}" method="post">
+                        <input class= "myInput" type="hidden" name="productId" th:value="${product.id}" />
+                        <div class="cart-container">
+                            <h3 id="prodHead">Purchase</h3>
+                            <input type="text" name="userId" placeholder="Enter User ID" required>
+                        </div>
+                        <div class="submitbutt"><button type="submit">Proceed</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </section>
+  </body>
+</html>

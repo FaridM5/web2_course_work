@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter</title>
+    <link rel="stylesheet" href="/filter.css" />
+    <link rel="icon" type="image/png"
+          href="/images/amazonico.jpg" />
+
+    <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header id="navbar">
+        <div class="logocont">
+            <a href="/" onclick="_blank"><img class="logo" src="/images/adazonw.png"></a>
+        </div>
+        <input type="checkbox" id="nav_check" hidden>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/user/add">Add User</a>
+                </li>
+                <li>
+                    <a href="/product/add">Add Product</a>
+                </li>
+                <li>
+                    <a href="/user/list" class="active">Users</a>
+                </li>
+                <li>
+                    <a href="/purchases">Purchases</a>
+                </li>
+                <li>
+                    <a href="/filter">Filter</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="heading">
+        <h1>User List</h1>
+    </div>
+
+    <div class="container">
+        <header>Filter By:</header>
+        <br>
+        <div class="table">
+            <form action="/filter" method="get">
+                <div>
+                    <input type="text" name="id" placeholder="id">
+                    <input type="text" name="username" placeholder="username">
+                    <input type="text" name="name" placeholder="name">
+                    <input type="text" name="surname" placeholder="surname">
+                    <input type="text" name="email" placeholder="email">
+                    <input type="text" name="phone" placeholder="phone">
+                    <input type="date" name="dateOfBirth" placeholder="Birt Date">
+                    <button class="nextBtn" type="submit">
+                        <span class="btnText">Search</span>
+                    </button>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </form>
+            <table style="border: 3px;">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Date of Birth</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.surname}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.phone}"></td>
+                    <td th:text="${user.dateOfBirth}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <link rel="stylesheet" href="/users.css" />
+    <link rel="icon" type="image/png"
+          href="/images/amazonico.jpg" />
+
+    <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header id="navbar">
+        <div class="logocont">
+            <a href="/" onclick="_blank"><img class="logo" src="/images/adazonw.png"></a>
+        </div>
+        <input type="checkbox" id="nav_check" hidden>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/user/add">Add User</a>
+                </li>
+                <li>
+                    <a href="/product/add">Add Product</a>
+                </li>
+                <li>
+                    <a href="/user/list" class="active">Users</a>
+                </li>
+                <li>
+                    <a href="/purchases">Purchases</a>
+                </li>
+                <li>
+                    <a href="/filter">Filter</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="heading">
+        <h1>User List</h1>
+    </div>
+
+    <div class="container">
+        <header>Users: <span th:text="${totalUsers} + ' records in total'"></span></header>
+        <br>
+        <div class="table">
+            <table style="border: 3px;">
+                <thead>
+                <tr>
+                    <th scope="col"><a th:href="@{/user/list(sortField='id', sortDir=${sortDir == 'asc' ? 'desc' : 'asc'})}">ID</a></th>
+                    <th scope="col"><a th:href="@{/user/list(sortField='username', sortDir=${sortDir == 'asc' ? 'desc' : 'asc'})}">Username</a></th>
+                    <th scope="col"><a th:href="@{/user/list(sortField='name', sortDir=${sortDir == 'asc' ? 'desc' : 'asc'})}">Name</a></th>
+                    <th scope="col"><a th:href="@{/user/list(sortField='surname', sortDir=${sortDir == 'asc' ? 'desc' : 'asc'})}">Surname</a></th>
+                    <th scope="col"><a th:href="@{/user/list(sortField='email', sortDir=${sortDir == 'asc' ? 'desc' : 'asc'})}">Email</a></th>
+                    <th scope="col"><a th:href="@{/user/list(sortField='phone', sortDir=${sortDir == 'asc' ? 'desc' : 'asc'})}">Phone</a></th>
+                    <th scope="col"><a th:href="@{/user/list(sortField='dateOfBirth', sortDir=${sortDir == 'asc' ? 'desc' : 'asc'})}">Date of Birth</a></th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="u : ${users}">
+                    <td th:text="${u.id}"></td>
+                    <td th:text="${u.username}"></td>
+                    <td th:text="${u.name}"></td>
+                    <td th:text="${u.surname}"></td>
+                    <td th:text="${u.email}"></td>
+                    <td th:text="${u.phone}"></td>
+                    <td th:text="${u.dateOfBirth}"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span style="margin-left: 15px;">
+                                <a th:href="@{/user/delete/{id}(id=${u.id})}" style="color: red"><i class="fa-solid fa-trash"></i></a>
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span style="margin-left: 20px;">
+                                <a th:href="@{/user/edit/{id}(id=${u.id})}" style="color:#cb7d08"><i class="fa-solid fa-pen-to-square ms-4"></i></a>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Pagination controls -->
+        <div class="pagination">
+            <a th:if="${currentPage != 0}" th:href="@{/user/list(page=${currentPage - 1}, sortField=${sortField}, sortDir=${sortDir})}">&laquo;</a>
+            <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:href="@{/user/list(page=${i}, sortField=${sortField}, sortDir=${sortDir})}" th:text="${i + 1}" th:classappend="${currentPage == i ? 'active' : ''}"></a>
+            </span>
+            <a th:if="${currentPage + 1 < totalPages}" th:href="@{/user/list(page=${currentPage + 1}, sortField=${sortField}, sortDir=${sortDir})}">&raquo;</a>
+        </div>
+    </div>
+</body>
+</html>

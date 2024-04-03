@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit User</title>
+    <link rel="stylesheet" href="/adduser.css" />
+
+    <link rel="icon" type="image/png"
+          href="images/amazonico.jpg"/>
+
+</head>
+<body>
+    <header id="navbar">
+        <div class="logocont">
+            <a href="/" onclick="_blank"><img class="logo" src="/images/adazonw.png"></a>
+        </div>
+        <input type="checkbox" id="nav_check" hidden>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/user/add">Add User</a>
+                </li>
+                <li>
+                    <a href="/product/add">Add Product</a>
+                </li>
+                <li>
+                    <a href="/user/list">Users</a>
+                </li>
+                <li>
+                    <a href="/purchases">Purchases</a>
+                </li>
+                <li>
+                    <a href="/filter">Filter</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="heading">
+        <h1>Edit User</h1>
+        <span>Pass the changes into form to update</span>
+    </div>
+
+    <div class="container">
+        <header>Edit User</header>
+
+        <form action="/user/update" method="post" th:action="@{/user/update}" th:object="${user}">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label>Username</label>
+                            <input type="text" name="username" th:value="${user.username}" placeholder="Enter new username">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Name</label>
+                            <input type="text" name="name" th:value="${user.name}" placeholder="Enter new name">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Surname</label>
+                            <input type="text" name="surname" th:value="${user.surname}" placeholder="Enter new surname">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" name="email" th:value="${user.email}" placeholder="Enter new email">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mobile Number</label>
+                            <input type="text" name="phone" th:value="${user.phone}" placeholder="Enter new phone">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            <input type="date" name="dateOfBirth" th:value="${user.dateOfBirth}" placeholder="Enter new date">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="nextBtn" type="submit">
+                    <span class="btnText">Update</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

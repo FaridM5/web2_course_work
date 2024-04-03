@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <link rel="stylesheet" href="/purchases.css" />
+
+    <link rel="icon" type="image/png"
+          href="images/amazonico.jpg"/>
+
+    <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<header id="navbar">
+    <div class="logocont">
+        <a href="/" onclick="_blank"><img class="logo" src="images/adazonw.png"></a>
+    </div>
+    <input type="checkbox" id="nav_check" hidden>
+    <nav>
+        <ul>
+            <li>
+                <a href="/user/add">Add User</a>
+            </li>
+            <li>
+                <a href="/product/add">Add Product</a>
+            </li>
+            <li>
+                <a href="/user/list">Users</a>
+            </li>
+            <li>
+                <a href="/purchases" class="active">Purchases</a>
+            </li>
+            <li>
+                <a href="/filter">Filter</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<div class="heading">
+    <h1>Purchase List</h1>
+</div>
+
+<div class="container">
+    <header>Shopping List: <span th:text="${#lists.size(purchases)} + ' records in total'"></span></header>
+    <br>
+    <div class="table">
+        <table style="border: 3px;">
+
+            <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="purchase : ${purchases}">
+                <td th:text="${purchase.userId}"></td>
+                <td th:text="${purchase.username}"></td>
+                <td th:text="${purchase.email}"></td>
+                <td th:text="${purchase.productName}"></td>
+                <td th:text="${purchase.description}"></td>
+                <td th:text="${purchase.price}"></td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span style="margin-left: 15px;">
+                            <a th:href="@{/deletePurchase(userId=${purchase.userId}, productId=${purchase.productId})}" style="color: red"><i class="fa-solid fa-trash"></i></a>
+                            <!--                            <a th:href="" style="color: red"><i class="fa-solid fa-trash"></i></a>-->
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

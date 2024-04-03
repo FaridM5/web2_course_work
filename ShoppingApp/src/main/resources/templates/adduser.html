@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add User</title>
+    <link rel="stylesheet" href="/adduser.css" />
+
+    <link rel="icon" type="image/png"
+          href="/images/amazonico.jpg" />
+
+</head>
+<body>
+    <header id="navbar">
+        <div class="logocont">
+            <a href="/" onclick="_blank"><img class="logo" src="/images/adazonw.png"></a>
+        </div>
+        <input type="checkbox" id="nav_check" hidden>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/user/add" class="active">Add User</a>
+                </li>
+                <li>
+                    <a href="/product/add">Add Product</a>
+                </li>
+                <li>
+                    <a href="/user/list">Users</a>
+                </li>
+                <li>
+                    <a href="/purchases">Purchases</a>
+                </li>
+                <li>
+                    <a href="/filter">Filter</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="heading">
+        <h1>Add the Users to H2!</h1>
+        <span>newly created user will not persist after you terminate</span>
+    </div>
+
+    <div class="container">
+        <header>Add User</header>
+
+        <form action="/user/save" method="post" th:action="@{/user/save}">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label>Username</label>
+                            <input type="text" name="username" placeholder="Enter username" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Enter user's name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Surname</label>
+                            <input type="text" name="surname" placeholder="Enter user's surname" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" name="email" placeholder="Enter user email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mobile Number</label>
+                            <input type="number" name="phone" placeholder="Enter phone" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            <input type="date" name="dateOfBirth" placeholder="Enter birth date" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="nextBtn" type="submit">
+                    <span class="btnText">Create</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

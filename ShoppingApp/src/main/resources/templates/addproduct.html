@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product</title>
+    <link rel="stylesheet" href="/addproduct.css" />
+
+    <link rel="icon" type="image/png"
+          href="/images/amazonico.jpg" />
+
+</head>
+<body>
+    <header id="navbar">
+        <div class="logocont">
+            <a href="/" onclick="_blank"><img class="logo" src="/images/adazonw.png"></a>
+        </div>
+        <input type="checkbox" id="nav_check" hidden>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/user/add">Add User</a>
+                </li>
+                <li>
+                    <a href="/product/add" class="active">Add Product</a>
+                </li>
+                <li>
+                    <a href="/user/list">Users</a>
+                </li>
+                <li>
+                    <a href="/purchases">Purchases</a>
+                </li>
+                <li>
+                    <a href="/filter">Filter</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="heading">
+        <h1>Add Product</h1>
+        <span>you may or may not include the picture</span>
+    </div>
+
+    <div class="container">
+        <header>Insert Product Details</header>
+
+        <form th:action="@{/product/create}" method="post" enctype="multipart/form-data">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Product Details</span>
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Enter Product Name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Price</label>
+                            <input type="number" name="price" placeholder="Enter Product Price" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Description</label>
+                            <input type="text" name="description" placeholder="Enter Product Description" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Image</label>
+                            <input type="file" name="image">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="nextBtn" type="submit">
+                    <span class="btnText">Create</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
