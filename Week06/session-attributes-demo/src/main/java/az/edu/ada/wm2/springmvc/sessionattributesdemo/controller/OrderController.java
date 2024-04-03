@@ -31,3 +31,5 @@ public class OrderController {
         return "redirect:/product/";
     }
 }
+
+
